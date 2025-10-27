@@ -1,0 +1,60 @@
+# Ops Guide — Gemini MVP
+
+## Overview
+This Ops Guide documents how to run, monitor, backup, and troubleshoot the Gemini daemon and related components on macOS (developer / MVP ops).
+
+**Default Paths**
+| Component | Path |
+|------------|------|
+| Project Root | `~/Projects/gemini-mvp` |
+| Virtual Environment | `~/Projects/gemini-mvp/venv` |
+| Daemon Watch Folder | `~/Certify` |
+| Ledger File | `~/Library/Application Support/gemini-ledger/ledger.jsonl` |
+| Proofs Directory | `~/Library/Application Support/gemini-ledger/proofs/` |
+| Signing Key | `~/.ssh/gemini/gemini_ed25519` |
+
+---
+
+## 1. Start / Stop / Run
+
+### 1.1 Development Mode (Foreground)
+Run the daemon directly while monitoring stdout:
+```bash
+cd ~/Projects/gemini-mvp
+source venv/bin/activate
+python cli/daemon.py
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.gemini.daemon</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/env</string>
+    <string>python3</string>
+    <string>/Users/YOUR_USERNAME/Projects/gemini-mvp/cli/daemon.py</string>
+  </array>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PYTHONUNBUFFERED</key>
+    <string>1</string>
+  </dict>
+
+  <key>RunAtLoad</key><true/>
+  <key>KeepAlive</key><true/>
+
+  <key>StandardOutPath</key>
+  <string>/Users/YOUR_USERNAME/Library/Logs/gemini-daemon.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/YOUR_USERNAME/Library/Logs/gemini-daemon.err.log</string>
+</dict>
+</plist>
+
+launchctl load ~/Library/LaunchAgents/com.gemini.daemon.plist
+launchctl unload ~/Library/LaunchAgents/com.gemini.daemon.plist
+
+
