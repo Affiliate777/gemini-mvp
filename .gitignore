@@ -1,4 +1,5 @@
 docs/test_documentation_module/
+<<<<<<< HEAD
 /var/
 __pycache__/
 *.pyc
@@ -13,3 +14,7 @@ api_job_status.log
 *.bak*
 streamlit_app.py.broken*
 .streamlit/
+=======
+var/
+>>>>>>> d27a261 (chore: ignore runtime var/ store)
+runtime/
