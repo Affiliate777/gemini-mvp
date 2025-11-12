@@ -1,1 +1,15 @@
 docs/test_documentation_module/
+/var/
+__pycache__/
+*.pyc
+api_job_status.log
+*.bak*
+streamlit_app.py.broken*
+.streamlit/
+/var/
+__pycache__/
+*.pyc
+api_job_status.log
+*.bak*
+streamlit_app.py.broken*
+.streamlit/
