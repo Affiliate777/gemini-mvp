@@ -17,18 +17,18 @@
     },
     {
       "node_id": "local-node",
-      "last_timestamp": "2025-11-12T19:09:00.409744+00:00",
+      "last_timestamp": "2025-11-12T19:18:01.853982+00:00",
       "last_payload": {
-        "timestamp": "2025-11-12T19:09:00.404490+00:00",
+        "timestamp": "2025-11-12T19:18:01.847029+00:00",
         "hostname": "Brets-MacBook-air.local",
         "platform": "macOS-15.6-arm64-arm-64bit",
-        "cpu_percent": 35.74,
+        "cpu_percent": 39.49,
         "cpu_count": 8,
         "mem_total": null,
         "mem_used": null,
         "mem_percent": null,
         "disk_total": 1995218165760,
-        "disk_used": 664775458816,
+        "disk_used": 664777744384,
         "disk_percent": 33.32,
         "uptime_seconds": null,
         "site": "Kerala",
@@ -70,5 +70,5 @@
       "generated_at": "2025-11-11T19:09:17.474200+00:00"
     }
   ],
-  "generated_at": "2025-11-12T19:09:28.199767+00:00"
+  "generated_at": "2025-11-12T19:18:29.090320+00:00"
 }
