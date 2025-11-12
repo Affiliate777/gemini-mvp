@@ -1,0 +1,18 @@
+project: CERTIFY-MVP2
+project_id: CERT-001
+certifier: geminibiofuels@proton.me
+workspace_path: /Users/bretbarnard/Projects/gemini-mvp/certify
+blockchain:
+  mode: none
+  local_ledger_path: certify/ledger
+verification_mode: strict
+rule_sets:
+  - name: local
+    path: certify/rules/local.yml
+crossdoc_checks: false
+outputs:
+  json: certify/artifacts/validation.json
+  excel: certify/artifacts/validation.xlsx
+logging:
+  level: INFO
+  file: certify/logs/certify.log

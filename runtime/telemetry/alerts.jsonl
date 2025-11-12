@@ -1,0 +1,2 @@
+{"level": "ALERT", "message": "manual test alert", "gateway": "http://127.0.0.1:8000", "last_remote_ts": null, "generated_at": "2025-11-11T19:09:17.474200+00:00"}
+{"level": "ALERT", "message": "Last remote telemetry is stale: 2025-11-12T02:26:06.397187+00:00 (60.6 minutes)", "gateway": "http://127.0.0.1:8000/", "last_remote_ts": "2025-11-12T02:26:06.397187+00:00", "generated_at": "2025-11-12T03:26:43.129800+00:00"}

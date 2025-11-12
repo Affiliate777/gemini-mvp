@@ -1,0 +1,19 @@
+[project]
+name = "gemini-mvp"
+version = "0.1.0"
+requires-python = ">=3.11"
+description = "Gemini workspace (includes certify module)"
+
+[project.scripts]
+certify = "certify.cli:app"
+
+[tool.setuptools]
+packages = ["certify"]
+[project]
+name = "gemini-mvp"
+version = "0.1.0"
+requires-python = ">=3.11"
+description = "Gemini workspace (includes certify module)"
+
+[project.scripts]
+certify = "certify.cli:app"

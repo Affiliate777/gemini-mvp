@@ -1,0 +1,74 @@
+{
+  "node_count": 5,
+  "nodes": [
+    {
+      "node_id": "auth-test",
+      "last_timestamp": "2025-11-11T16:14:14.738466+00:00",
+      "last_payload": {
+        "cpu_percent": 2.2
+      }
+    },
+    {
+      "node_id": "curl-test",
+      "last_timestamp": "2025-11-11T16:06:02.932054+00:00",
+      "last_payload": {
+        "cpu_percent": 1.2
+      }
+    },
+    {
+      "node_id": "local-node",
+      "last_timestamp": "2025-11-12T19:08:00.263039+00:00",
+      "last_payload": {
+        "timestamp": "2025-11-12T19:08:00.255688+00:00",
+        "hostname": "Brets-MacBook-air.local",
+        "platform": "macOS-15.6-arm64-arm-64bit",
+        "cpu_percent": 27.98,
+        "cpu_count": 8,
+        "mem_total": null,
+        "mem_used": null,
+        "mem_percent": null,
+        "disk_total": 1995218165760,
+        "disk_used": 664767647744,
+        "disk_percent": 33.32,
+        "uptime_seconds": null,
+        "site": "Kerala",
+        "project": "Gemini"
+      }
+    },
+    {
+      "node_id": "manual-post",
+      "last_timestamp": "2025-11-11T16:17:38.413239+00:00",
+      "last_payload": {
+        "note": "manual",
+        "cpu_percent": 0.1
+      }
+    },
+    {
+      "node_id": "test-node-1",
+      "last_timestamp": "2025-11-11T15:54:11.397044+00:00",
+      "last_payload": {
+        "cpu_percent": 12.3,
+        "mem_percent": 45.6
+      }
+    }
+  ],
+  "alerts": [
+    {
+      "id": 2,
+      "level": "ALERT",
+      "message": "Last remote telemetry is stale: 2025-11-12T02:26:06.397187+00:00 (60.6 minutes)",
+      "gateway": "http://127.0.0.1:8000/",
+      "last_remote_ts": "2025-11-12T02:26:06.397187+00:00",
+      "generated_at": "2025-11-12T03:26:43.129800+00:00"
+    },
+    {
+      "id": 1,
+      "level": "ALERT",
+      "message": "manual test alert",
+      "gateway": "http://127.0.0.1:8000",
+      "last_remote_ts": null,
+      "generated_at": "2025-11-11T19:09:17.474200+00:00"
+    }
+  ],
+  "generated_at": "2025-11-12T19:08:28.066914+00:00"
+}
