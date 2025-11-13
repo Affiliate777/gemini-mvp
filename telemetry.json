@@ -1,0 +1,13 @@
+{
+  "auth_token": null,
+  "endpoint": "http://localhost:9000/telemetry",
+  "heartbeat_interval_seconds": 60,
+  "metrics": [
+    "cpu_percent",
+    "mem_percent",
+    "disk_percent",
+    "uptime_seconds"
+  ],
+  "telemetry_interval_seconds": 30,
+  "transport": "http"
+}

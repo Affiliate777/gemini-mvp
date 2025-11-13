@@ -1,0 +1,28 @@
+{
+  "nodes": {
+    "50db3dfb-192b-429a-b51d-38425e9a211b": {
+      "created_at": 1763046625.101954,
+      "hostname": "Brets-MacBook-air.local",
+      "ip": "192.168.1.74",
+      "metadata": {
+        "project_dir": "/Users/bretbarnard/Projects/gemini-mvp",
+        "source": "installer"
+      },
+      "node_id": "50db3dfb-192b-429a-b51d-38425e9a211b",
+      "os": "Darwin 24.6.0",
+      "python_version": "3.13.2",
+      "remote_registration": {
+        "auth_token": "mock-3f6ef590b9c2",
+        "last_checked": 1763046625.142999,
+        "last_response": {
+          "assigned_node_id": "50db3dfb-192b-429a-b51d-38425e9a211b",
+          "auth_token": "mock-3f6ef590b9c2",
+          "server_time": 1763046625,
+          "telemetry_endpoint": "http://localhost:9000/telemetry"
+        },
+        "telemetry_endpoint": "http://localhost:9000/telemetry"
+      }
+    }
+  },
+  "updated_at": 1763046625.1020858
+}

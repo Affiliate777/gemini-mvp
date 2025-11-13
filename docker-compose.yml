@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  gemini:
+    build: .
+    container_name: gemini-mock
+    ports:
+      - "8765:8765"
+    volumes:
+      - ./:/app:ro
+    environment:
+      - GEMINI_PORT=8765
