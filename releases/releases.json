@@ -1,0 +1,34 @@
+{
+  "releases": {
+    "v0.1.0": {
+      "artifact": "v0.1.0.tar.gz",
+      "version": "v0.1.0",
+      "sha256": "5cc4d46b3edc62d1c68f8b4b950d2077a5fba3a7de33223af4b0f4b814796877",
+      "created_at": 1762978218
+    },
+    "v0.1.1": {
+      "artifact": "v0.1.1.tar.gz",
+      "version": "v0.1.1",
+      "sha256": "084ca01a51bbc826372b5227899a9c80f43c65176869bcfa15d40c38d5877c6e",
+      "created_at": 1762978218
+    },
+    "v0.2.0": {
+      "artifact": "v0.2.0.tar.gz",
+      "version": "v0.2.0",
+      "sha256": "d4cb759fe723142839c149ee18d96294ecfd4b59313f49e8c2802394b1ca02ee",
+      "created_at": 1763020410,
+      "hmac": "402ff3f66dc2341b1e9bad118d1aecb223e929eedb30465d19b8b3711b54de5d"
+    },
+    "v0.3.0": {
+      "artifact": "v0.3.0.tar.gz",
+      "version": "v0.3.0",
+      "sha256": "249855cfe992dff7d3e9554d1e8ddecf825f7f3c78dfcae6be025f35bdd2a04d",
+      "created_at": 1763046655,
+      "hmac": "122760d7fa80665457c2e307d57026ca57894f085dfe32f3036c2a94c594b231"
+    }
+  },
+  "deployed": {
+    "version": "v0.1.0",
+    "deployed_at": 1763020613
+  }
+}

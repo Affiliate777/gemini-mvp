@@ -1,0 +1,15 @@
+2025-11-13 13:11:37,930 INFO    Telemetry agent starting. endpoint=http://localhost:9000/telemetry interval=30
+2025-11-13 13:11:38,476 WARNING POST to http://localhost:9000/telemetry failed: <urlopen error [Errno 61] Connection refused>
+2025-11-13 13:11:38,476 WARNING Telemetry POST failed; backing off 2.4s (attempt=1)
+2025-11-13 13:11:40,887 INFO    Run-once mode complete.
+2025-11-13 13:18:54,850 INFO    Telemetry agent starting. endpoint=http://localhost:9000/telemetry interval=30
+2025-11-13 13:18:55,409 INFO    Telemetry POST succeeded. response={'status': 'ok', 'received': True}
+2025-11-13 13:18:55,409 INFO    Run-once mode complete.
+2025-11-13 20:14:30,436 INFO    Registry remote_registration changed. Updating endpoint/token.
+2025-11-13 20:14:30,436 INFO    Telemetry agent starting. endpoint=http://localhost:9000/telemetry interval=30
+2025-11-13 20:14:30,992 INFO    Telemetry POST succeeded. response={'status': 'ok', 'received': True}
+2025-11-13 20:14:30,992 INFO    Run-once mode complete.
+2025-11-13 20:31:26,890 INFO    Registry remote_registration changed. Updating endpoint/token.
+2025-11-13 20:31:26,891 INFO    Telemetry agent starting. endpoint=http://localhost:9000/telemetry interval=30
+2025-11-13 20:31:27,445 INFO    Telemetry POST succeeded. response={'status': 'ok', 'received': True}
+2025-11-13 20:31:27,445 INFO    Run-once mode complete.
