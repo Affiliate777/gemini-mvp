@@ -42,7 +42,7 @@ except Exception:
 class DeviceModel(BaseModel):
     id: str = Field(..., min_length=1)
     node_type: str
-    channel_version: str
+    channel_version: Optional[str] = '0.0.0'
     metadata: Optional[Dict[str, Any]] = {}
     last_seen: Optional[int] = None
 
@@ -87,6 +87,12 @@ def _maybe_json(s):
 @with_retry()
 def add_device(device: dict):
     init_db()
+    # coerce defaults for backward compatibility
+    if 'channel_version' not in device or not device.get('channel_version'):
+        device['channel_version'] = device.get('channel_version', '0.0.0')
+    # coerce defaults for backward compatibility
+    if 'channel_version' not in device or not device.get('channel_version'):
+        device['channel_version'] = device.get('channel_version', '0.0.0')
     try:
         d = DeviceModel(**device).dict()
     except Exception as e:
