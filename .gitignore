@@ -4,3 +4,8 @@ signing.key
 gemini_registry.db
 releases/
 runtime/
+__pycache__/
+*.pyc
+registry/
+signing.key.bak
+signing.key.broken.bak
