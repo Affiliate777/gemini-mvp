@@ -1,3 +1,6 @@
 docs/test_documentation_module/
 var/
 signing.key
+gemini_registry.db
+releases/
+runtime/
