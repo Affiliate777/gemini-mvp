@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>com.gemini.telemetry.server</string>
+    <key>ProgramArguments</key>
+    <array>
+      <string>/Users/bretbarnard/Projects/gemini-mvp/scripts/run-health-server.sh</string>
+      <string>8001</string>
+    </array>
+    <key>StandardOutPath</key>
+    <string>/Users/bretbarnard/Projects/gemini-mvp/var/telemetry_server.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/bretbarnard/Projects/gemini-mvp/var/telemetry_server.err</string>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+  </dict>
+</plist>
