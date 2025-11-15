@@ -26,6 +26,22 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt || true
           pip install pytest
+      - name: Set PYTHONPATH
+        run: |
+          echo "PYTHONPATH=$PWD" >> $GITHUB_ENV
+      - name: Debug: show PYTHONPATH/sys.path and repo files
+        run: |
+          echo "PWD: $(pwd)"
+          echo "--- ENV PYTHONPATH ---"
+          echo "${PYTHONPATH}"
+          python - <<'PY2'
+import os,sys,subprocess
+print('sys.path:')
+for p in sys.path:
+    print('  ', p)
+print('\nTop-level listing:')
+subprocess.run(['ls','-la'])
+PY2
       - name: Run pytest
         run: |
           pytest -q
