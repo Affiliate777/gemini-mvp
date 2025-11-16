@@ -1,12 +1,30 @@
-#!/usr/bin/env bash
 set -euo pipefail
+
 BASE_DIR="$(cd "$(dirname "$0")/.." && pwd)"
-LOG_FILE="$BASE_DIR/logs/update-audit.log"
+LOG_DIR="$BASE_DIR/logs"
+mkdir -p "$LOG_DIR"
+LOG_FILE="$LOG_DIR/update-audit.log"
+
 VERSION="${1:-${VERSION:-}}"
 RELEASE_DIR="${2:-${RELEASE_DIR:-}}"
+RC="${3:-}"
+
 TS="$(date +%s)"
-_escape_json(){ local s="$1"; s="${s//$'\n'/ }"; s="${s//\\/\\\\}"; s="${s//\"/\\\"}"; printf '%s' "$s"; }
+_escape_json() {
+  local s="$1"
+  s="${s//$'\n'/ }"                 # replace newlines with space
+  s="${s//\\/\\\\}"                # backslash -> \\
+  s="${s//\"/\\\"}"                # " -> \"
+  printf '%s' "$s"
+}
+
 V_ESC="$(_escape_json "${VERSION:-}")"
 R_ESC="$(_escape_json "${RELEASE_DIR:-}")"
-# use flock on the log file descriptor (requires util-linux; macOS has /usr/bin/lockfile? if not, fallback to plain append)
-( flock -x 200 2>/dev/null || true; printf '{"version":"%s","release_dir":"%s","ts":%s}\n' "$V_ESC" "$R_ESC" "$TS" >> "$LOG_FILE" ) 200>"$LOG_FILE".lock
+
+if [ -n "$RC" ]; then
+  printf '{"version":"%s","release_dir":"%s","rc":%s,"ts":%s}\n' "$V_ESC" "$R_ESC" "$RC" "$TS" >> "$LOG_FILE"
+else
+  printf '{"version":"%s","release_dir":"%s","ts":%s}\n' "$V_ESC" "$R_ESC" "$TS" >> "$LOG_FILE"
+fi
+
+exit 0

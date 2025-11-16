@@ -1,8 +1,5 @@
-#!/usr/bin/env bash
-set -euo pipefail
 
-# Accept either: scripts/update-apply.sh <version>
-# Or: receive JSON on stdin with {"version":"vX.Y.Z"} and extract version.
+set -euo pipefail
 parse_version_from_stdin() {
   local in
   if [ -t 0 ]; then
@@ -22,10 +19,6 @@ fi
 if [ -z "${VERSION:-}" ]; then
   echo "usage: $0 <version>  OR pipe JSON with {\"version\":\"vX.Y.Z\"} to stdin" >&2
   exit 2
-
-# Ensure we always write an audit entry (success or failure).
-_exit_status=0
-trap '_exit_status=$?; bash "$(dirname "$0")/update-audit-append.sh" "$VERSION" "$RELEASE_DIR" || true; exit $_exit_status' EXIT
 fi
 
 BASE_DIR="$(cd "$(dirname "$0")/.." && pwd)"
@@ -34,6 +27,8 @@ ART="$UPDATES_DIR/release.tar.gz"
 CHK_FILE="$UPDATES_DIR/release.sha256"
 RELEASES_DIR="$BASE_DIR/releases"
 RELEASE_DIR="$RELEASES_DIR/$VERSION-$(date +%s)"
+_exit_status=0
+trap '_exit_status=$?; bash "$(dirname "$0")/update-audit-append.sh" "$VERSION" "$RELEASE_DIR" "$_exit_status" || true; exit $_exit_status' EXIT
 
 if [ ! -f "$ART" ]; then
   echo "artifact not found: $ART" >&2
@@ -57,8 +52,6 @@ tar -xzf "$ART" -C "$RELEASE_DIR"
 mkdir -p "$BASE_DIR/runtime"
 ln -sfn "$RELEASE_DIR" "$BASE_DIR/runtime/current"
 
-# post-deploy health check (detached, robust probe)
-# This probe writes timestamped attempts to logs/update-apply.log so output is unambiguous.
 nohup sh -c '
 PROBE_LOG="logs/update-apply.log"
 mkdir -p /tmp
@@ -77,13 +70,8 @@ echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) probe: giving up" >> "$PROBE_LOG"
 exit 1
 ' >/dev/null 2>&1 &
 
-# Print human-visible success and record an audit entry with useful metadata.
 echo "update applied successfully: $VERSION -> $RELEASE_DIR"
 
-# Ensure logs directory exists under project root
 mkdir -p "$BASE_DIR/logs"
-
-# Call the audit helper with explicit args so it can record metadata
-bash "$(dirname "$0")/update-audit-append.sh" "$VERSION" "$RELEASE_DIR"
 
 exit 0
