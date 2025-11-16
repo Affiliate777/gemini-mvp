@@ -1,0 +1,7 @@
+{
+  "version": "v1.0.1",
+  "created_at": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
+  "artifact": "release.tar.gz",
+  "checksum_file": "release.sha256",
+  "health_check": "/health"
+}
