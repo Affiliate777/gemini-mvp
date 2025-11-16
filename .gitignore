@@ -1,3 +1,13 @@
 /logs/*.log
 /runtime/*
 /releases/*
+cat >> .gitignore <<'EOF'
+cat >> .gitignore <<'EOF'
+/logs/*
+/releases/*
+/runtime/*
+gemini_registry.db
+debug_update_server.py
+scripts/*.bak*
+logs/*.lock
+logs/archive/
