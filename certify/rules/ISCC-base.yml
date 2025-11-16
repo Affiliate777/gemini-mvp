@@ -1,0 +1,13 @@
+name: ISCC-base
+rules:
+  - id: ISCC-REV-01
+    title: "Revision date present (ISCC baseline)"
+    type: file
+    severity: warning
+    checker: revision_present
+
+  - id: ISCC-REV-02
+    title: "Revision date valid format"
+    type: file
+    severity: error
+    checker: revision_valid

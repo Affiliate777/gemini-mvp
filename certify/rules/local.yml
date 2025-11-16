@@ -1,0 +1,18 @@
+name: local
+inherits: ISCC-base.yml
+rules:
+  - id: LOCAL-001
+    title: "Local override - ensure revision exists"
+    type: file
+    severity: warning
+    checker: revision_present
+
+  - id: CROSS-001
+    title: "Data sheets A and B revision must match"
+    type: crossdoc
+    severity: error
+    scope:
+      - path: "certify/tests/fixtures/test_ds_A.xlsx"
+        field: "Revision Date"
+      - path: "certify/tests/fixtures/test_ds_B.xlsx"
+        field: "Revision Date"

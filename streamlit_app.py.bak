@@ -1,0 +1,95 @@
+import streamlit as st
+import json
+import time
+import requests
+from app.anchor_service import perform_anchor_sync, start_anchor_job
+
+st.title("Anchoring (MVP)")
+
+# -----------------------------
+# Core anchor actions
+# -----------------------------
+resource_id = st.text_input("resource_id", "example-1")
+
+if st.button("Anchor Now (sync)"):
+    with st.spinner("Running anchor (sync)..."):
+        try:
+            user_ctx = {"user_id": st.session_state.get("user_id", "dev-user")}
+            res = perform_anchor_sync({"resource_id": resource_id}, user_ctx)
+            st.success(f"Anchor completed: {res.get('anchor_id')}")
+            st.json(res)
+        except Exception as e:
+            st.error(f"Anchor failed: {e}")
+
+if st.button("Anchor Now (async)"):
+    try:
+        user_ctx = {"user_id": st.session_state.get("user_id", "dev-user")}
+        job = start_anchor_job({"resource_id": resource_id}, user_ctx)
+        st.session_state["last_queued_job"] = job.get("job_id")
+        st.success(f"Anchor queued: {job.get('job_id')}")
+        st.json(job)
+    except Exception as e:
+        st.error(f"Failed to queue anchor: {e}")
+
+# -----------------------------
+# File-backed job status check
+# -----------------------------
+st.markdown("### Check job status (file-backed)")
+jid = st.text_input("Job ID", st.session_state.get("last_queued_job", ""))
+if st.button("Refresh job status"):
+    if jid:
+        try:
+            jobs = json.load(open("var/jobs.json"))
+            entry = jobs.get(jid)
+            if entry:
+                st.json(entry)
+            else:
+                st.warning("Job id not found in var/jobs.json")
+        except Exception as e:
+            st.error(f"Failed to read job status: {e}")
+    else:
+        st.info("Enter a job id")
+
+# -----------------------------
+# REST-based job status check
+# -----------------------------
+st.markdown("### REST job status (via job-status service)")
+
+_JOB_API_BASE = "http://127.0.0.1:56613/api/job"
+
+def fetch_job_status_rest(job_id: str, base=_JOB_API_BASE, timeout=3):
+    if not job_id:
+        return None
+    try:
+        r = requests.get(f"{base}/{job_id}", timeout=timeout)
+        if r.status_code == 200:
+            return r.json()
+        return None
+    except Exception as e:
+        return {"__error": str(e)}
+
+rest_jid = st.text_input("Job id to watch (REST)", st.session_state.get("last_job_id", ""))
+auto_rest = st.checkbox("Auto-refresh from job-status API (every 5 s)")
+
+if st.button("Fetch REST now"):
+    if rest_jid:
+        res = fetch_job_status_rest(rest_jid)
+        if res is None:
+            st.warning("Job not found or service returned 404")
+        elif "__error" in (res or {}):
+            st.error(f"Error fetching job: {res['__error']}")
+        else:
+            st.json(res)
+    else:
+        st.info("Enter a job id")
+
+if auto_rest and rest_jid:
+    res = fetch_job_status_rest(rest_jid)
+    if res is None:
+        st.warning("Job not found (REST)")
+    elif "__error" in (res or {}):
+        st.error(f"Error fetching job: {res['__error']}")
+    else:
+        st.json(res)
+    time.sleep(5)
+    st.experimental_rerun()

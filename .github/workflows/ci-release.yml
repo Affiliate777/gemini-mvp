@@ -1,0 +1,124 @@
+name: CI & Release
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+    tags:
+      - 'v*'
+
+jobs:
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt || true
+          pip install pytest
+      - name: Set PYTHONPATH
+        run: |
+          echo "PYTHONPATH=$PWD" >> $GITHUB_ENV
+      - name: Debug: show PYTHONPATH/sys.path and repo files
+        run: |
+          echo "PWD: $(pwd)"
+          echo "--- ENV PYTHONPATH ---"
+          echo "${PYTHONPATH}"
+          python - <<'PY2'
+import os,sys,subprocess
+print('sys.path:')
+for p in sys.path:
+    print('  ', p)
+print('\nTop-level listing:')
+subprocess.run(['ls','-la'])
+PY2
+      - name: Run pytest
+        run: |
+          pytest -q
+
+  release:
+    name: Build, sign and upload release (tags only)
+    runs-on: ubuntu-latest
+    needs: test
+    if: startsWith(github.ref, 'refs/tags/v')
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+
+      - name: Build release tarball
+        run: |
+          TAG=${GITHUB_REF##refs/tags/}
+          OUT="releases/update-${TAG}.tar.gz"
+          mkdir -p releases
+          tar -czf "${OUT}" --transform "s|^|update-${TAG}/|" \
+            README.md LICENSE server client scripts telemetry updater runtime || true
+          echo "${OUT}"
+
+      - name: Compute SHA256
+        run: |
+          TAG=${GITHUB_REF##refs/tags/}
+          OUT="releases/update-${TAG}.tar.gz"
+          sha256sum "${OUT}" | awk '{print $1}' > "${OUT}.sha256"
+          echo "sha256: $(cat ${OUT}.sha256)"
+
+      - name: Load signing key from secret
+        env:
+          SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
+        run: |
+          if [ -z "$SIGNING_KEY" ]; then
+            echo "SIGNING_KEY empty; set repo secret SIGNING_KEY (PEM private key)" >&2
+            exit 1
+          fi
+          echo "$SIGNING_KEY" > signing.key
+          chmod 600 signing.key
+          openssl pkey -in signing.key -pubout -out signing.pub
+
+      - name: Sign tarball with OpenSSL
+        run: |
+          TAG=${GITHUB_REF##refs/tags/}
+          OUT="releases/update-${TAG}.tar.gz"
+          SIG="${OUT}.sig"
+          if openssl pkeyutl -sign -inkey signing.key -in "${OUT}" -out "${SIG}" 2>/dev/null; then
+            echo "Signed with pkeyutl -> ${SIG}"
+          else
+            openssl dgst -sha256 -sign signing.key -out "${SIG}" "${OUT}"
+            echo "Signed with dgst -> ${SIG}"
+          fi
+          cp signing.pub "${OUT}.pub"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload release artifacts
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref_name }}
+          files: |
+            releases/update-${{ github.ref_name }}.tar.gz
+            releases/update-${{ github.ref_name }}.tar.gz.sha256
+            releases/update-${{ github.ref_name }}.tar.gz.sig
+            releases/update-${{ github.ref_name }}.tar.gz.pub
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

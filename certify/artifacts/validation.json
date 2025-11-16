@@ -1,0 +1,165 @@
+[
+  {
+    "file": "certify/tests/fixtures/test_ds_A.xlsx",
+    "doc": {
+      "type": "excel",
+      "path": "certify/tests/fixtures/test_ds_A.xlsx",
+      "sheet": "Sheet1",
+      "metadata": {
+        "nrows": 2,
+        "ncols": 2
+      },
+      "fields": {
+        "Revision Date": "2025-10-01",
+        "Other Field": "alpha"
+      }
+    },
+    "checks": {
+      "simple": [
+        {
+          "id": "R-0002",
+          "title": "Revision date valid",
+          "severity": "info",
+          "passed": true,
+          "info": "2025-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "id": "ISCC-REV-01",
+          "title": "Revision date present (ISCC baseline)",
+          "severity": "warning",
+          "passed": true,
+          "info": ""
+        },
+        {
+          "id": "ISCC-REV-02",
+          "title": "Revision date valid format",
+          "severity": "error",
+          "passed": true,
+          "info": "2025-10-01"
+        },
+        {
+          "id": "LOCAL-001",
+          "title": "Local override - ensure revision exists",
+          "severity": "warning",
+          "passed": true,
+          "info": ""
+        }
+      ]
+    }
+  },
+  {
+    "file": "certify/tests/fixtures/test_ds.xlsx",
+    "doc": {
+      "type": "excel",
+      "path": "certify/tests/fixtures/test_ds.xlsx",
+      "sheet": "Sheet1",
+      "metadata": {
+        "nrows": 2,
+        "ncols": 2
+      },
+      "fields": {
+        "Revision Date": "2025-10-01",
+        "Other Field": "sample"
+      }
+    },
+    "checks": {
+      "simple": [
+        {
+          "id": "R-0002",
+          "title": "Revision date valid",
+          "severity": "info",
+          "passed": true,
+          "info": "2025-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "id": "ISCC-REV-01",
+          "title": "Revision date present (ISCC baseline)",
+          "severity": "warning",
+          "passed": true,
+          "info": ""
+        },
+        {
+          "id": "ISCC-REV-02",
+          "title": "Revision date valid format",
+          "severity": "error",
+          "passed": true,
+          "info": "2025-10-01"
+        },
+        {
+          "id": "LOCAL-001",
+          "title": "Local override - ensure revision exists",
+          "severity": "warning",
+          "passed": true,
+          "info": ""
+        }
+      ]
+    }
+  },
+  {
+    "file": "certify/tests/fixtures/test_ds_B.xlsx",
+    "doc": {
+      "type": "excel",
+      "path": "certify/tests/fixtures/test_ds_B.xlsx",
+      "sheet": "Sheet1",
+      "metadata": {
+        "nrows": 2,
+        "ncols": 2
+      },
+      "fields": {
+        "Revision Date": "2025-10-01",
+        "Other Field": "alpha"
+      }
+    },
+    "checks": {
+      "simple": [
+        {
+          "id": "R-0002",
+          "title": "Revision date valid",
+          "severity": "info",
+          "passed": true,
+          "info": "2025-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "id": "ISCC-REV-01",
+          "title": "Revision date present (ISCC baseline)",
+          "severity": "warning",
+          "passed": true,
+          "info": ""
+        },
+        {
+          "id": "ISCC-REV-02",
+          "title": "Revision date valid format",
+          "severity": "error",
+          "passed": true,
+          "info": "2025-10-01"
+        },
+        {
+          "id": "LOCAL-001",
+          "title": "Local override - ensure revision exists",
+          "severity": "warning",
+          "passed": true,
+          "info": ""
+        }
+      ]
+    }
+  },
+  {
+    "file": "crossdoc",
+    "doc": {},
+    "checks": [
+      {
+        "id": "CROSS-001",
+        "title": "Data sheets A and B revision must match",
+        "severity": "error",
+        "passed": true,
+        "info": "Revision Date='2025-10-01' vs Revision Date='2025-10-01'"
+      }
+    ]
+  }
+]
