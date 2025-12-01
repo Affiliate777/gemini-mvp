@@ -6,11 +6,60 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A86995C62EDE04D400F37D0D /* UniformTypeIdentifiers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A86995C52EDE04D400F37D0D /* UniformTypeIdentifiers.framework */; };
+		A86995D22EDE04D400F37D0D /* GeminiFileProvider.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A86995C32EDE04D400F37D0D /* GeminiFileProvider.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A86995D02EDE04D400F37D0D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A8A0556C2EDC98C700864647 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A86995C22EDE04D400F37D0D;
+			remoteInfo = GeminiFileProvider;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A869959D2EDDC95400F37D0D /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A86995D22EDE04D400F37D0D /* GeminiFileProvider.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		A86995C32EDE04D400F37D0D /* GeminiFileProvider.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GeminiFileProvider.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A86995C52EDE04D400F37D0D /* UniformTypeIdentifiers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UniformTypeIdentifiers.framework; path = System/Library/Frameworks/UniformTypeIdentifiers.framework; sourceTree = SDKROOT; };
 		A8A055742EDC98C700864647 /* GeminiAgent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeminiAgent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A86995D52EDE04D400F37D0D /* Exceptions for "GeminiFileProvider" folder in "GeminiFileProvider" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = A86995C22EDE04D400F37D0D /* GeminiFileProvider */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		A86995C72EDE04D400F37D0D /* GeminiFileProvider */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A86995D52EDE04D400F37D0D /* Exceptions for "GeminiFileProvider" folder in "GeminiFileProvider" target */,
+			);
+			path = GeminiFileProvider;
+			sourceTree = "<group>";
+		};
 		A8A055762EDC98C700864647 /* GeminiAgent */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = GeminiAgent;
@@ -19,6 +68,14 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A86995C02EDE04D400F37D0D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A86995C62EDE04D400F37D0D /* UniformTypeIdentifiers.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A8A055712EDC98C700864647 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -29,10 +86,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A86995C42EDE04D400F37D0D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A86995C52EDE04D400F37D0D /* UniformTypeIdentifiers.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A8A0556B2EDC98C700864647 = {
 			isa = PBXGroup;
 			children = (
 				A8A055762EDC98C700864647 /* GeminiAgent */,
+				A86995C72EDE04D400F37D0D /* GeminiFileProvider */,
+				A86995C42EDE04D400F37D0D /* Frameworks */,
 				A8A055752EDC98C700864647 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				A8A055742EDC98C700864647 /* GeminiAgent.app */,
+				A86995C32EDE04D400F37D0D /* GeminiFileProvider.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,6 +116,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A86995C22EDE04D400F37D0D /* GeminiFileProvider */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A86995D62EDE04D400F37D0D /* Build configuration list for PBXNativeTarget "GeminiFileProvider" */;
+			buildPhases = (
+				A86995BF2EDE04D400F37D0D /* Sources */,
+				A86995C02EDE04D400F37D0D /* Frameworks */,
+				A86995C12EDE04D400F37D0D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				A86995C72EDE04D400F37D0D /* GeminiFileProvider */,
+			);
+			name = GeminiFileProvider;
+			packageProductDependencies = (
+			);
+			productName = GeminiFileProvider;
+			productReference = A86995C32EDE04D400F37D0D /* GeminiFileProvider.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		A8A055732EDC98C700864647 /* GeminiAgent */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A8A0557F2EDC98C800864647 /* Build configuration list for PBXNativeTarget "GeminiAgent" */;
@@ -55,10 +145,12 @@
 				A8A055702EDC98C700864647 /* Sources */,
 				A8A055712EDC98C700864647 /* Frameworks */,
 				A8A055722EDC98C700864647 /* Resources */,
+				A869959D2EDDC95400F37D0D /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A86995D12EDE04D400F37D0D /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				A8A055762EDC98C700864647 /* GeminiAgent */,
@@ -80,6 +172,9 @@
 				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 2600;
 				TargetAttributes = {
+					A86995C22EDE04D400F37D0D = {
+						CreatedOnToolsVersion = 26.0.1;
+					};
 					A8A055732EDC98C700864647 = {
 						CreatedOnToolsVersion = 26.0.1;
 					};
@@ -100,11 +195,19 @@
 			projectRoot = "";
 			targets = (
 				A8A055732EDC98C700864647 /* GeminiAgent */,
+				A86995C22EDE04D400F37D0D /* GeminiFileProvider */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A86995C12EDE04D400F37D0D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A8A055722EDC98C700864647 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -115,6 +218,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A86995BF2EDE04D400F37D0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A8A055702EDC98C700864647 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -124,7 +234,73 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		A86995D12EDE04D400F37D0D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A86995C22EDE04D400F37D0D /* GeminiFileProvider */;
+			targetProxy = A86995D02EDE04D400F37D0D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		A86995D32EDE04D400F37D0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = GeminiFileProvider/GeminiFileProvider.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GeminiFileProvider/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GeminiFileProvider;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gemini.GeminiAgent.GeminiFileProvider;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A86995D42EDE04D400F37D0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = GeminiFileProvider/GeminiFileProvider.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GeminiFileProvider/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GeminiFileProvider;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gemini.GeminiAgent.GeminiFileProvider;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		A8A0557D2EDC98C800864647 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -306,6 +482,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A86995D62EDE04D400F37D0D /* Build configuration list for PBXNativeTarget "GeminiFileProvider" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A86995D32EDE04D400F37D0D /* Debug */,
+				A86995D42EDE04D400F37D0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A8A0556F2EDC98C700864647 /* Build configuration list for PBXProject "GeminiAgent" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
