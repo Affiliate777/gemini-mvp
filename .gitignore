@@ -35,3 +35,18 @@ signing.key.bak
 signing.key.broken.bak
 >>>>>>> 92649a5576252d2f8bf034bb05b916c5a9202526
 .DS_Store
+
+.DS_Store
+build/
+DerivedData/
+*.xcuserstate
+*.xcworkspace
+*.xcuserdata
+xcuserdata/
+*.mode1v3
+*.pbxuser
+*.perspectivev3
+.idea/
+xcodebuild.log
+fileprovider-build.log
+var/
