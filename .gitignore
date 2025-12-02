@@ -51,3 +51,5 @@ xcodebuild.log
 fileprovider-build.log
 var/
 fileprovider.log
+xcodebuild_app.log
+xcodebuild_fileprovider.log
